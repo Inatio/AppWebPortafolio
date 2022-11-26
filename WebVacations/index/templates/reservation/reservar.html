@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% load crispy_forms_tags i18n %}
+
+
+{% block content %}
+
+        <div class="w3-row-padding">
+            <div class="card-header" style="width: 100%;">
+                <h2>Reservas Departamentos </h2>
+            </div>
+            <div class="w3-row-padding">
+                <div class="w3-col l3 m6 w3-margin-bottom">
+                    <div class="w3-display-container">
+                        {% crispy form %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+{% endblock content %}
+
+<!-- Specific JS goes HERE -->
+{% block javascripts %}
+    {{ form.media }}
+{% endblock javascripts %}

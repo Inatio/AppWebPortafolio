@@ -1,0 +1,40 @@
+{% url 'index' as index_url %}
+{% url 'about' as about_url %}
+{% url 'contact' as contact_url %}
+{% url 'login' as login_url %}
+{% url 'profile' as profile_url %}
+{% url 'register' as register_url %}
+{% url 'logout' as logout_url %}
+{% url 'listado' as listado_url %}
+{% url 'agregar' as agregar_url%}
+{% url 'reservar' as reservar_url%}
+<nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top w3-black" id="mainNav">
+     <div class="container ">
+         <a class="navbar-brand" href="#page-top">Arriendo Real</a>
+         <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+             Menu
+             <i class="fas fa-bars"></i>
+         </button>
+         <div class="collapse navbar-collapse" id="navbarResponsive">
+             <ul class="navbar-nav ms-auto">
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded {% if request.path == index_url %}active{% endif %}" href="{{ index_url}}">Home</a></li>
+                {% if request.session.correo %}
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded {% if request.path == listado %}active{% endif %}" href="{{ listado_url }}">Arriendos</a></li>
+                {% endif %}
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded {% if request.path == about_url %}active{% endif %}" href="{{ about_url }}">About</a></li>
+
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded {% if request.path == contact_url %}active{% endif %}" href="{{ contact_url }}">Contacto</a></li>
+                {% if not request.session.correo %}
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded {% if request.path == login_url %}active{% endif %}" href="{{ login_url }}">Login</a></li>
+                {% endif %}
+                {% if not request.session.correo %}
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded {% if request.path == register_url %}active{% endif %}" href="{{ register_url }}">Registro</a></li>
+                {% endif %}
+                {% if request.session.correo %}
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded {% if request.path == logout_url %}active{% endif %}" href="{{ logout_url }}">Cerrar Sesion</a></li>
+                {% endif %}
+
+             </ul>
+         </div>
+     </div>
+ </nav>

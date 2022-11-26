@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<div class="card-header" style="width: 100%;">
+    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-8">Registro</h3>
+</div>
+<body>
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-12 col-md-6 offset-md-3">
+
+                <div class="card">
+                    <div class="card-body">
+                        <h2>Ingresa tus Datos</h2>
+                        <hr>
+                        <form class="register-form" method="post">
+
+                            {% csrf_token %}
+                            {{ form.as_p }}
+
+                            <input type="submit" value="Registrar" class="w3-button w3-green w3-block">
+                            <button type="reset" class="w3-button w3-black w3-block">Limpiar</button>
+
+                        </form>
+
+                    </div>
+                    
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</body>
+{% endblock %}

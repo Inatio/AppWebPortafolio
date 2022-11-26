@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<div class="card-header" style="width: 100%;">
+    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-8">Login</h3>
+</div>
+<body>
+<form method="post">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-12 col-md-6 offset-md-3">
+
+                <div class="card">
+                    <div class="card-body">
+                        <h2>Ingresa tus Datos</h2>
+                        {% csrf_token %}
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td><input type="text" placeholder="Ingrese su correo" name="correo" required></td>
+                                </tr>
+
+                                <tr>
+                                    <td><input type="password" placeholder="Ingrese su password" name="password" required></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5" align="center">
+                                        <button type="submit" class="w3-button w3-green w3-block">Login</button>
+                                        &nbsp;&nbsp;
+                                        <button type="reset" class="w3-button w3-black w3-block">Limpiar</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        {% if messages %}
+                            {% for msg in messages %}
+                            <b>{{msg}}</b>
+                            {% endfor %}
+                            {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+</body>
+{% endblock %}

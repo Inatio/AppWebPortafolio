@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+<header class="bgimg w3-display-container w3-grayscale-min masthead text-white text-center" id="home">
+    <span class="masthead-heading text-uppercase mb-0 w3-text-black" style="font-size:90px">Arriendo<br>Real</span>
+</header>
+
+<body>
+<!-- Add a background color and large text to the whole page -->
+<div class="w3-sand w3-grayscale w3-large">
+
+    <!-- About Container -->
+    <div class="w3-container" id="about">
+      <div class="w3-content" style="max-width:700px">
+        <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide">ARRIENDOS</span></h5>
+        <p>Contamos con distintos tipos de arriendos y servicios para disposicion de nuestros clientes a lo largo del pais.</p>
+        <p>Pueden ser consultados y vistos sin compromisos.</p>
+        <div class="w3-panel w3-leftbar w3-light-grey">
+          <p><i>"Cuida de los pequeños gastos; un pequeño agujero hunde un barco.</i></p>
+          <p>Benjamin Franklin (1706-1790) Estadista y científico estadounidense.</p>
+        </div>
+        <img src="static/theme/assets/img/Vina_del_Mar.jpg" style="width:100%;max-width:1000px" class="w3-margin-top">
+        <p><strong>Viña del Mar</strong> Castillo Chile</p>
+      </div>
+    </div>
+    
+    <!-- Menu Container -->
+    <div class="w3-container" id="menu">
+      <div class="w3-content" style="max-width:700px">
+     
+        <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-wide">SERVICIOS</span></h5>
+      
+        <div class="w3-row w3-center w3-card w3-padding">
+          <a href="javascript:void(0)" onclick="openMenu(event, 'Eat');" id="myLink">
+            <div class="w3-col s6 tablink">Departamentos</div>
+          </a>
+          <a href="javascript:void(0)" onclick="openMenu(event, 'Drinks');">
+            <div class="w3-col s6 tablink">Tours</div>
+          </a>
+        </div>
+    
+        <div id="Eat" class="w3-container menu w3-padding-48 w3-card">
+          <h5>Viña del Mar</h5>
+          <p class="w3-text-grey">Poseemos amplia gama a elección</p><br>
+        
+          <h5>La serena / Coquimbo</h5>
+          <p class="w3-text-grey">Poseemos amplia gama a elección</p><br>
+        
+          <h5>Reñaca</h5>
+          <p class="w3-text-grey">Poseemos amplia gama a elección</p><br>
+        
+          <h5>Pichilemu</h5>
+          <p class="w3-text-grey">Poseemos amplia gama a elección</p><br>
+        
+          <h5>Quintero</h5>
+          <p class="w3-text-grey">Poseemos amplia gama a elección</p>
+        </div>
+    
+        <div id="Drinks" class="w3-container menu w3-padding-48 w3-card">
+          <h5>Individual</h5>
+          <p class="w3-text-grey">Valor de $15.990</p><br>
+        
+          <h5>Parejas</h5>
+          <p class="w3-text-grey">Valor de $35.990</p><br>
+        
+          <h5>Familiares</h5>
+          <p class="w3-text-grey">Valor de $75.990</p><br>
+        
+          <h5>Celebraciones</h5>
+          <p class="w3-text-grey">Valor de $105.990</p><br>
+        
+          <h5>Festividades</h5>
+          <p class="w3-text-grey">Valor de $155.990</p>
+        </div>  
+        <img src="static/theme/assets/img/la-serena-6.webp" style="width:100%;max-width:1000px;margin-top:32px;">
+      </div>
+    </div>
+    
+    <!-- Contact/Area Container -->
+    <div class="w3-container" id="where" style="padding-bottom:32px;">
+      <div class="w3-content" style="max-width:700px">
+        <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-wide">DONDE ENCONTRARNOS</span></h5>
+        <p>Por nuestra oficina o mediante nuestros ejecutivos.</p>
+        <img src="static/theme/assets/img/oficina.jpg" class="w3-image" style="width:100%">
+        <p><span class="w3-tag">ACUDE A NOSOTROS</span> Contamos con los mejores profesionales</p>
+      </div>
+    </div>
+    
+    <!-- End page content -->
+    </div>
+    
+    <!-- Footer -->
+    <footer class="w3-center w3-light-grey w3-padding-48 w3-large">
+      <p>Derechos Reservados <a title="W3.CSS" target="_blank" class="w3-hover-text-green"></a></p>
+    </footer>
+
+    <script>
+        // Tabbed Menu
+        function openMenu(evt, menuName) {
+          var i, x, tablinks;
+          x = document.getElementsByClassName("menu");
+          for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+          }
+          tablinks = document.getElementsByClassName("tablink");
+          for (i = 0; i < x.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" w3-dark-grey", "");
+          }
+          document.getElementById(menuName).style.display = "block";
+          evt.currentTarget.firstElementChild.className += " w3-dark-grey";
+        }
+        document.getElementById("myLink").click();
+        </script>
+</body>
+
+{% endblock %}

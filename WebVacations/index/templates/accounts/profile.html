@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+<h1>
+   Perfil de {{ user.username }} 
+</h1>
+
+<a href="http://127.0.0.1:8000/agregar" class="btn btn-info btn-sm">Crear estacionamiento</a>
+<a href="http://127.0.0.1:8000/reservar" class="btn btn-info btn-sm">Reservar estacionamiento</a>
+<a href="http://127.0.0.1:8000/listado" class="btn btn-info btn-sm">Ver reservas</a>
+<a href="http://127.0.0.1:8000/reservas" class="btn btn-info btn-sm">Ver estacionamientos</a>
+{% endblock %}

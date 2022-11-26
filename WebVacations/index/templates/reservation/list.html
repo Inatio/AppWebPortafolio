@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% load humanize %}
+{{ my_num|intcomma }}
+
+{% block content %}
+<div class="card-header" style="width: 100%;">
+    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-8">Departamentos</h3>
+</div>
+{% load humanize %}
+<div class="productos">
+    {% for r in arriendos %}
+    <div class="producto">
+        <div class="contenedor_producto">
+            {% if r.imagen %}
+            
+            {% endif %}
+            <div class="w3-row-padding">
+                <div class="w3-col 30 m15 w3-margin-bottom">
+                    <div class="w3-display-container">
+                        <div class="w3-display-topleft w3-black w3-padding">{{ r.nombre_dpto |  capfirst}}</div>
+                        <img src="{{ r.imagen.url }}" style="width:100%">
+                        <h2 class="w3-opacity">{{ r.id_comuna | capfirst}}, {{ r.id_comuna.id_region | capfirst}}</h2>
+                        <h3 class="w3-opacity">Tarifa Díaria: ${{ r.tarifa_diaria | intcomma}}</h3>
+                        {% if r.disponibilidad == disponible %}
+                        <a href="{% url 'reservar_departamento' %}" class="w3-button w3-green w3-block">Reservar</a>
+                        <a class="w3-button w3-black w3-block" target="_blank"
+                            href="{% url 'pdf_reserva' %}">
+                            {% trans "Imprimir" %}
+                        </a>
+                        {% endif %}
+
+                        {% if reserva %}
+                            <a href="{% url 'payment' %}" class="w3-button w3-brown w3-block">Pagar</a>
+                        {% endif %}
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
+{% block extrajs %}
+<script type="text/javascript">
+    function registrarReserva(){
+        data = {
+            'usuario': "{{ request.user.id}}",
+            'departamento': "{{ arriendos.id }}"
+        }
+        $.ajax({
+            data:data,
+            url:"{% url 'reserva_departamento' %}",
+            type: 'POST',
+            success:function(response){
+                notificationSucces(response.mensaje);
+            },
+            error:function(error){
+                notificationError(error.responseJSON.mensaje);
+                mostrarErroresCreacion(error);
+            }
+        })
+    }
+
+</script>
+
+{% endblock extrajs %}
